@@ -2,6 +2,8 @@
 
 ## 📌 Overview
 
+🔗 **Live Demo:** http://13.221.65.74:7860/
+
 This project is a RAG-based chatbot built using LangChain and FAISS.
 It loads three AWS Well-Architected PDF documents (~800 pages total), generates vector embeddings, and retrieves context-relevant chunks to answer user questions with source references.
 The UI is implemented with Gradio.
