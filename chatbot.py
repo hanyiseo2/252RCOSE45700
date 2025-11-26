@@ -1,14 +1,19 @@
 import os
+from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
+load_dotenv()
+
 if not os.getenv("OPENAI_API_KEY"):
-    os.environ["OPENAI_API_KEY"] = "REMOVED_API_KEY"
+    api_key=os.getenv("OPENAI_API_KEY")
 
 print("🔄 벡터 스토어 로딩 중...")
-embeddings = OpenAIEmbeddings()
+embeddings = OpenAIEmbeddings(
+        model="text-embedding-3-small"
+    )
 vectorstore = FAISS.load_local("vectorstore", embeddings, allow_dangerous_deserialization=True)
 print("✅ 벡터 스토어 로드 완료")
 

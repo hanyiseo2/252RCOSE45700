@@ -1,12 +1,12 @@
 import os
+from dotenv import load_dotenv
 from langchain_community.document_loaders import WebBaseLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 
-# OpenAI API 키 설정
-os.environ["OPENAI_API_KEY"] = "REMOVED_API_KEY"
+load_dotenv()
 
 if not os.getenv("OPENAI_API_KEY"):
     raise ValueError("OPENAI_API_KEY 환경변수를 설정해주세요!")
@@ -102,7 +102,9 @@ if len(source_count) > 10:
 
 # 임베딩 생성
 print("\n🔢 임베딩 생성 중... (약 30초~1분 소요)")
-embeddings = OpenAIEmbeddings()
+embeddings = OpenAIEmbeddings(
+        model="text-embedding-3-small"
+    )
 vectorstore = FAISS.from_documents(chunks, embeddings)
 print("✅ 벡터 스토어 생성 완료")
 
