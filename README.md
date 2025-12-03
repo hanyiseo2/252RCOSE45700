@@ -24,7 +24,7 @@ The UI is implemented with Gradio.
 | -------- | --------------------- |
 | Backend  | FastAPI, Python 3.12  |
 | AI/ML    | LangChain, OpenAI API |
-| Infra    | AWS EC2, IAM          |
+| Infra    | AWS EC2, IAM, Docker  |
 | etc      | GitHub, Gradio        |
 
 ---
